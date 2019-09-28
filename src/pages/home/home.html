@@ -1,0 +1,20 @@
+<ion-header >
+  <ion-navbar color="primary">
+    <ion-title>
+      Estufa Automatizada
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card *ngFor="let itens of listaItens">
+    <ion-grid>
+        <ion-card-content>
+            <ion-row>
+              <img id="icons" [src]="itens.icon" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{itens.item}}
+            </ion-row>
+        </ion-card-content>
+    </ion-grid>
+  </ion-card>
+
+</ion-content>
