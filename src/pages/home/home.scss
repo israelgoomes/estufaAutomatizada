@@ -3,4 +3,29 @@ page-home {
     img#icons{
         width: 30px;
     }
+    .teste{
+        position: fixed !important;
+        top:0 !important;
+        background: white !important;
+        width: 100% !important;
+        margin-top: 56px;
+        margin-bottom: 60px;
+        border-bottom: 1px solid #d3d3d3 !important;
+        text-align: left;
+        color: #65df66;
+
+    }
+    .itens{
+        text-align: center;
+    }
+    .scroll-content{
+        padding-top: 55px;
+
+    }
+
+
+
+
+
+    
 }

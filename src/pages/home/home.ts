@@ -1,13 +1,26 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { ItemModel } from './../../models/itemModel';
+import { Component, OnInit } from '@angular/core';
+import { NavController, ToastController, ModalController } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage {
+export class HomePage implements OnInit{
 
-  constructor(public navCtrl: NavController) {
+itemOne: Array<ItemModel> = [];
+itenTwo: string = null;
+isChecked: boolean;
+teste2: string = "true";
+
+ngOnInit():void {
+
+  
+}
+
+  constructor(public navCtrl: NavController,
+    private toastCtrl: ToastController,
+    private modalCtrl: ModalController) {
 console.log(this.listaItens);
   }
 teste: string = "../../assets//imgs/icons8-cor-50.png"
@@ -32,9 +45,48 @@ teste: string = "../../assets//imgs/icons8-cor-50.png"
     {item: "Abobrinha", icon: "../../assets/imgs/abobrinha.svg"},
     {item: "Pepino", icon: "../../assets/imgs/pepino.png"},
     {item: "Batata", icon: "../../assets/imgs/batata.jpeg"},
-
-    
-  
   ];
  
+  getItemSelected(item: ItemModel){
+    item.isChecked = true;
+   let c: number = 0;
+    if(this.itemOne.length < 2 && item.isChecked == true){
+      console.log('entrou aqui')
+      this.itemOne.push(item);
+     // c=2;
+    } else if(item.isChecked == true || item.isChecked == false){
+      item.isChecked = false;
+
+      let toast = this.toastCtrl.create({
+        message: 'Só é possível selecionar até 2 itens para plantaçāo.',
+        duration: 3000,
+        position: 'top'
+      });
+    
+      toast.onDidDismiss(() => {
+        item.isChecked = false;
+
+        console.log('Dismissed toast');
+      });
+      toast.present();
+    
+    }
+      
+    this.itemOne.forEach(i=>{
+      if(i.item == item.item && item.isChecked == false){
+        const index = this.itemOne.indexOf(item)
+        this.itemOne.splice(index, 1);
+      }
+    })
+   
+
+  console.log(this.itemOne)
+  }
+
+  selectedItens(){
+      this.modalCtrl.create('ItensSelecionadosPage', {_itensSelecionados: this.itemOne}).present();
+  }
+
+  
+
 }

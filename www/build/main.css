@@ -25699,3 +25699,151 @@ ion-navbar.toolbar {
 page-home img#icons {
   width: 30px;
 }
+
+page-home .teste {
+  position: fixed !important;
+  top: 0 !important;
+  background: white !important;
+  width: 100% !important;
+  margin-top: 56px;
+  margin-bottom: 60px;
+  border-bottom: 1px solid #d3d3d3 !important;
+  text-align: left;
+  color: #65df66;
+}
+
+page-home .itens {
+  text-align: center;
+}
+
+page-home .scroll-content {
+  padding-top: 55px;
+}
+
+page-itens-selecionados img#icons {
+  width: 30px;
+}
+
+page-itens-selecionados .teste {
+  position: fixed !important;
+  top: 0 !important;
+  background: white !important;
+  width: 100% !important;
+  margin-top: 56px;
+  margin-bottom: 60px;
+  border-bottom: 1px solid #d3d3d3 !important;
+  text-align: center;
+  color: #65df66;
+}
+
+page-itens-selecionados .itens {
+  text-align: center;
+}
+
+page-itens-selecionados .scroll-content {
+  padding-top: 55px;
+}
+
+page-itens-selecionados .wrapper {
+  position: relative;
+  margin: 40px auto;
+  background: white;
+}
+
+page-itens-selecionados .wrapper,
+page-itens-selecionados .wrapper * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+page-itens-selecionados .wrapper {
+  width: 250px;
+  height: 250px;
+}
+
+page-itens-selecionados .wrapper .pie {
+  width: 50%;
+  height: 100%;
+  -webkit-transform-origin: 100% 50%;
+  transform-origin: 100% 50%;
+  position: absolute;
+  background: #65df66;
+  border: 5px solid rgba(0, 0, 0, 0.5);
+}
+
+page-itens-selecionados .wrapper .spinner {
+  border-radius: 100% 0 0 100% / 50% 0 0 50%;
+  z-index: 200;
+  border-right: none;
+  -webkit-animation: rota 10s linear infinite;
+  animation: rota 10s linear infinite;
+}
+
+page-itens-selecionados .wrapper:hover .spinner,
+page-itens-selecionados .wrapper:hover .filler,
+page-itens-selecionados .wrapper:hover .mask {
+  -webkit-animation-play-state: running;
+  animation-play-state: running;
+}
+
+page-itens-selecionados .wrapper .filler {
+  border-radius: 0 100% 100% 0 / 0 50% 50% 0;
+  left: 50%;
+  opacity: 0;
+  z-index: 100;
+  animation: opa 10s steps(1, end) infinite reverse;
+  border-left: none;
+}
+
+page-itens-selecionados .wrapper .mask {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  background: inherit;
+  opacity: 1;
+  z-index: 300;
+  -webkit-animation: opa 10s steps(1, end) infinite;
+  animation: opa 10s steps(1, end) infinite;
+}
+
+@-webkit-keyframes rota {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rota {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes opa {
+  0% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes opa {
+  0% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
