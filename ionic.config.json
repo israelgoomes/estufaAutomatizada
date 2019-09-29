@@ -1,5 +1,7 @@
 {
   "name": "TccProject",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }
