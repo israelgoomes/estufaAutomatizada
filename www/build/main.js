@@ -61,11 +61,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var HomePage = /** @class */ (function () {
-    function HomePage(navCtrl, toastCtrl, modalCtrl) {
+    function HomePage(navCtrl, toastCtrl, modalCtrl, appCtrl) {
         this.navCtrl = navCtrl;
         this.toastCtrl = toastCtrl;
         this.modalCtrl = modalCtrl;
+        this.appCtrl = appCtrl;
         this.itemOne = [];
+        this.listaAux = [];
         this.itenTwo = null;
         this.teste2 = "true";
         this.teste = "../../assets//imgs/icons8-cor-50.png";
@@ -89,31 +91,35 @@ var HomePage = /** @class */ (function () {
             { item: "Abóbora", icon: "../../assets/imgs/abobora.svg" },
             { item: "Abobrinha", icon: "../../assets/imgs/abobrinha.svg" },
             { item: "Pepino", icon: "../../assets/imgs/pepino.png" },
-            { item: "Batata", icon: "../../assets/imgs/batata.jpeg" },
+            { item: "Batata", icon: "../../assets/imgs/batata.jpeg" }
         ];
         console.log(this.listaItens);
     }
-    HomePage.prototype.ngOnInit = function () {
-    };
+    HomePage.prototype.ngOnInit = function () { };
     HomePage.prototype.getItemSelected = function (item) {
         var _this = this;
         item.isChecked = true;
         var c = 0;
         if (this.itemOne.length < 2 && item.isChecked == true) {
-            console.log('entrou aqui');
+            console.log("entrou aqui");
             this.itemOne.push(item);
+            // this.listaAux.push(item);
             // c=2;
         }
         else if (item.isChecked == true || item.isChecked == false) {
             item.isChecked = false;
+            this.itemOne.forEach(function (i) {
+                if (i.item == item.item) {
+                    i.isChecked = false;
+                }
+            });
             var toast = this.toastCtrl.create({
-                message: 'Só é possível selecionar até 2 itens para plantaçāo.',
-                duration: 3000,
-                position: 'top'
+                message: "Só é possível selecionar até 2 itens para plantaçāo. Por favor desselecione os demais.",
+                duration: 5000,
+                position: "bottom"
             });
             toast.onDidDismiss(function () {
-                item.isChecked = false;
-                console.log('Dismissed toast');
+                console.log("Dismissed toast");
             });
             toast.present();
         }
@@ -123,18 +129,31 @@ var HomePage = /** @class */ (function () {
                 _this.itemOne.splice(index, 1);
             }
         });
+        console.log(item.isChecked);
         console.log(this.itemOne);
     };
     HomePage.prototype.selectedItens = function () {
-        this.modalCtrl.create('ItensSelecionadosPage', { _itensSelecionados: this.itemOne }).present();
+        var _this = this;
+        var modal = this.modalCtrl.create("ItensSelecionadosPage", {
+            _itensSelecionados: this.itemOne
+        });
+        modal.present();
+        modal.onDidDismiss(function (data) {
+            _this.itemOne.forEach(function (i) {
+                //this.appCtrl.getRootNav().setRoot('MyApp');
+                i.isChecked = false;
+                _this.itemOne = [];
+            });
+        });
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/israelgoomes/estufaAutomatizada/src/pages/home/home.html"*/'<ion-header >\n  <ion-navbar color="primary">\n    <ion-title>\n      Estufa Automatizada\n    </ion-title>\n  </ion-navbar>\n \n  <ion-item class="teste" no-lines>\n\n      Selecione os itens a serem plantados\n  \n    </ion-item>\n\n</ion-header>\n\n\n\n\n<ion-content>\n\n  <!-- <ion-item class="teste">\n\n    Selecione os itens a serem plantados\n\n  </ion-item> -->\n\n  <ion-fab style="padding-left: 85%;"> \n      <button  [color]="primary" ion-fab (click)="selectedItens()">  <ion-icon style="font-size: 30px;" name="arrow-dropright"></ion-icon>\n      </button>\n    </ion-fab>\n\n  <ion-card class="itens" *ngFor="let itens of listaItens">\n    <ion-grid>\n        <ion-card-content>\n            <ion-row style="text-align: center;">\n                <ion-checkbox [(ngModel)]="itens.isChecked" (click)="getItemSelected(itens)" ></ion-checkbox>\n              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img id="icons" [src]="itens.icon" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{itens.item}}\n\n            </ion-row>\n        </ion-card-content>\n    </ion-grid>\n  </ion-card>\n \n</ion-content>\n'/*ion-inline-end:"/Users/israelgoomes/estufaAutomatizada/src/pages/home/home.html"*/
+            selector: "page-home",template:/*ion-inline-start:"/Users/israelgoomes/estufaAutomatizada/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>\n      Estufa Automatizada\n    </ion-title>\n  </ion-navbar>\n\n  <ion-item class="teste" no-lines>\n    Selecione os itens a serem plantados\n  </ion-item>\n</ion-header>\n\n<ion-content>\n\n  <ion-fab style="padding-left: 85%;">\n    <button [color]="primary" ion-fab (click)="selectedItens()">\n      <ion-icon style="font-size: 30px;" name="arrow-dropright"></ion-icon>\n    </button>\n  </ion-fab>\n\n  <ion-card class="itens" *ngFor="let itens of listaItens">\n    <ion-grid>\n      <ion-card-content>\n        <ion-row style="text-align: center;">\n          <ion-checkbox\n            [(ngModel)]="itens.isChecked"\n            (click)="getItemSelected(itens)"\n          ></ion-checkbox>\n          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img\n            id="icons"\n            [src]="itens.icon"\n          />\n          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ itens.item }}\n        </ion-row>\n      </ion-card-content>\n    </ion-grid>\n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/israelgoomes/estufaAutomatizada/src/pages/home/home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* ModalController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* App */]])
     ], HomePage);
     return HomePage;
 }());
@@ -195,14 +214,14 @@ var AppModule = /** @class */ (function () {
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
-                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* MyApp */], {}, {
+                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* MyApp */], {}, {
                     links: [
                         { loadChildren: '../pages/itens-selecionados/itens-selecionados.module#ItensSelecionadosPageModule', name: 'ItensSelecionadosPage', segment: 'itens-selecionados', priority: 'low', defaultHistory: [] }
                     ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_5_ionic_progress_bar__["a" /* IonicSimpleProgressBarModule */].forRoot()
             ],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* IonicApp */]],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicApp */]],
             entryComponents: [
                 __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* MyApp */],
                 __WEBPACK_IMPORTED_MODULE_7__pages_home_home__["a" /* HomePage */]
@@ -211,7 +230,7 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_5_ionic_progress_bar__["b" /* SimpleProgressBarProvider */],
                 __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__["a" /* StatusBar */],
                 __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */],
-                { provide: __WEBPACK_IMPORTED_MODULE_1__angular_core__["u" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicErrorHandler */] }
+                { provide: __WEBPACK_IMPORTED_MODULE_1__angular_core__["u" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicErrorHandler */] }
             ]
         })
     ], AppModule);
@@ -259,7 +278,7 @@ var MyApp = /** @class */ (function () {
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/israelgoomes/estufaAutomatizada/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/israelgoomes/estufaAutomatizada/src/app/app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
     return MyApp;
 }());

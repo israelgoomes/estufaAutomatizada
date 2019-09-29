@@ -1,44 +1,38 @@
-<ion-header >
+<ion-header>
   <ion-navbar color="primary">
     <ion-title>
       Estufa Automatizada
     </ion-title>
   </ion-navbar>
- 
+
   <ion-item class="teste" no-lines>
-
-      Selecione os itens a serem plantados
-  
-    </ion-item>
-
+    Selecione os itens a serem plantados
+  </ion-item>
 </ion-header>
-
-
-
 
 <ion-content>
 
-  <!-- <ion-item class="teste">
-
-    Selecione os itens a serem plantados
-
-  </ion-item> -->
-
-  <ion-fab style="padding-left: 85%;"> 
-      <button  [color]="primary" ion-fab (click)="selectedItens()">  <ion-icon style="font-size: 30px;" name="arrow-dropright"></ion-icon>
-      </button>
-    </ion-fab>
+  <ion-fab style="padding-left: 85%;">
+    <button [color]="primary" ion-fab (click)="selectedItens()">
+      <ion-icon style="font-size: 30px;" name="arrow-dropright"></ion-icon>
+    </button>
+  </ion-fab>
 
   <ion-card class="itens" *ngFor="let itens of listaItens">
     <ion-grid>
-        <ion-card-content>
-            <ion-row style="text-align: center;">
-                <ion-checkbox [(ngModel)]="itens.isChecked" (click)="getItemSelected(itens)" ></ion-checkbox>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img id="icons" [src]="itens.icon" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{itens.item}}
-
-            </ion-row>
-        </ion-card-content>
+      <ion-card-content>
+        <ion-row style="text-align: center;">
+          <ion-checkbox
+            [(ngModel)]="itens.isChecked"
+            (click)="getItemSelected(itens)"
+          ></ion-checkbox>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img
+            id="icons"
+            [src]="itens.icon"
+          />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ itens.item }}
+        </ion-row>
+      </ion-card-content>
     </ion-grid>
   </ion-card>
- 
 </ion-content>

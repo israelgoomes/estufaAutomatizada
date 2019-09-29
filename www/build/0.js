@@ -27,7 +27,7 @@ var ItensSelecionadosPageModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_2__itens_selecionados__["a" /* ItensSelecionadosPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__itens_selecionados__["a" /* ItensSelecionadosPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__itens_selecionados__["a" /* ItensSelecionadosPage */]),
             ],
         })
     ], ItensSelecionadosPageModule);
@@ -16997,17 +16997,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var ItensSelecionadosPage = /** @class */ (function () {
-    function ItensSelecionadosPage(navCtrl, navParams, toastCtrl, _progressBar) {
+    function ItensSelecionadosPage(navCtrl, navParams, toastCtrl, _progressBar, viewCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.toastCtrl = toastCtrl;
         this._progressBar = _progressBar;
+        this.viewCtrl = viewCtrl;
         this.maxTime = 30;
+        this.item = [];
         this.listaItensSelecionados = [];
-        this.listaItensSelecionados = this.navParams.get('_itensSelecionados');
+        this.listaItensSelecionados = this.navParams.get("_itensSelecionados");
     }
     ItensSelecionadosPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad ItensSelecionadosPage');
+        console.log("ionViewDidLoad ItensSelecionadosPage");
     };
     ItensSelecionadosPage.prototype.finalizaPlantacao = function () {
         this.inicia = false;
@@ -17019,10 +17021,10 @@ var ItensSelecionadosPage = /** @class */ (function () {
         var toast = this.toastCtrl.create({
             message: "Planta\u00E7\u0101o finalizada as " + hora + ":" + min + ":" + sec,
             duration: 3000,
-            position: 'top'
+            position: "bottom"
         });
         toast.onDidDismiss(function () {
-            console.log('Dismissed toast');
+            console.log("Dismissed toast");
         });
         toast.present();
     };
@@ -17032,13 +17034,29 @@ var ItensSelecionadosPage = /** @class */ (function () {
         var hora = data.getHours();
         var min = data.getMinutes();
         var sec = data.getSeconds();
+        console.log('tamanho da lista selecionados', this.listaItensSelecionados.length);
+        if (this.listaItensSelecionados.length >= 2) {
+            console.log('Teste 1 ');
+            this.item1 = this.listaItensSelecionados[0].item;
+            this.item2 = this.listaItensSelecionados[1].item;
+            console.log;
+            this.message = "Planta\u00E7\u0101o de " + this.item1 + " e " + this.item2 + " iniciada as " + hora + ":" + min + ":" + sec + " com sucesso!";
+            console.log(this.message);
+        }
+        else {
+            this.item1 = this.listaItensSelecionados[0].item;
+            this.item2 = '';
+            this.message = "Planta\u00E7\u0101o de " + this.item1 + " iniciada as " + hora + ":" + min + ":" + sec + " com sucesso!";
+        }
+        console.log('Teste', this.item1);
+        console.log(this.item2);
         var toast = this.toastCtrl.create({
-            message: "Planta\u00E7\u0101o iniciada as " + hora + ":" + min + ":" + sec,
-            duration: 3000,
-            position: 'top'
+            message: this.message,
+            duration: 4000,
+            position: "bottom"
         });
         toast.onDidDismiss(function () {
-            console.log('Dismissed toast');
+            console.log("Dismissed toast");
         });
         toast.present();
         var countDownDate = new Date("Oct 29, 2018 14:50:25").getTime();
@@ -17056,19 +17074,23 @@ var ItensSelecionadosPage = /** @class */ (function () {
             // Output the result in an element with id="demo"
             //document.getElementById("demo").innerHTML = days + "d " + hours + "h "
             +minutes + "m " + seconds + "s ";
-            // If the count down is over, write some text 
             if (distance < 0) {
                 clearInterval(x);
-                //document.getElementById("demo").innerHTML = "Plantaçao em andamemento";
             }
         }, 1000);
     };
+    ItensSelecionadosPage.prototype.fecharModal = function () {
+        this.viewCtrl.dismiss();
+    };
     ItensSelecionadosPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-itens-selecionados',template:/*ion-inline-start:"/Users/israelgoomes/estufaAutomatizada/src/pages/itens-selecionados/itens-selecionados.html"*/'<!--\n  Generated template for the ItensSelecionadosPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-navbar color="primary">\n    <ion-title>Itens Selecionados</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n\n    <ion-card class="itens" *ngFor="let itens of listaItensSelecionados">\n        <ion-grid>\n            <ion-card-content>\n                <ion-row style="text-align: center;">\n                \n                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img id="icons" [src]="itens.icon" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{itens.item}}\n    \n                </ion-row>\n            </ion-card-content>\n        </ion-grid>\n      </ion-card>\n\n\n\n      <ion-card style="border: 1px solid #65df66;">\n      <ion-card-content style="padding-top: 0px; padding-bottom: 0px;">\n          <ion-item (click)="iniciaPlantacao()">\n    <label>iniciar Plantaçāo</label>        <ion-note item-end>\n        <ion-icon style="color: #65df66; font-size: 40px;" name="checkmark-circle"></ion-icon> </ion-note>\n            <br />\n          </ion-item>\n        </ion-card-content>      \n      </ion-card>\n\n      <ion-card style="border: 1px solid red;"> \n        <ion-card-content style="padding-top: 0px; padding-bottom: 0px;">\n            <ion-item (click)="finalizaPlantacao()">\n      <label>Finalizar Plantaçāo</label>        <ion-note item-end>\n          <ion-icon  style="color: red; font-size: 40px;" name="close-circle"></ion-icon> </ion-note>\n              <br />\n            </ion-item>\n          </ion-card-content>    \n        </ion-card>\n\n        <div class="wrapper" *ngIf="inicia == true;">\n\n        <p style="text-align: left;" id="demo">Plataçāo em andamento, aguarde ...</p>\n\n          <div class="pie spinner"></div>\n          <div class="pie filler"></div>\n          <div class="mask"></div>\n        </div>\n</ion-content>\n'/*ion-inline-end:"/Users/israelgoomes/estufaAutomatizada/src/pages/itens-selecionados/itens-selecionados.html"*/,
+            selector: "page-itens-selecionados",template:/*ion-inline-start:"/Users/israelgoomes/estufaAutomatizada/src/pages/itens-selecionados/itens-selecionados.html"*/'<!--\n  Generated template for the ItensSelecionadosPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>\n      <ion-icon (click)="fecharModal()" name="arrow-round-back"></ion-icon>\n      &nbsp;&nbsp;&nbsp; Itens Selecionados</ion-title\n    >\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-card class="itens" *ngFor="let itens of listaItensSelecionados">\n    <ion-grid>\n      <ion-card-content>\n        <ion-row style="text-align: center;">\n          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img\n            id="icons"\n            [src]="itens.icon"\n          />\n          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ itens.item }}\n        </ion-row>\n      </ion-card-content>\n    </ion-grid>\n  </ion-card>\n\n  <ion-card style="border: 1px solid #65df66;">\n    <ion-card-content style="padding-top: 0px; padding-bottom: 0px;">\n      <ion-item (click)="iniciaPlantacao()">\n        <label>iniciar Plantaçāo</label>\n        <ion-note item-end>\n          <ion-icon\n            style="color: #65df66; font-size: 40px;"\n            name="checkmark-circle"\n          ></ion-icon>\n        </ion-note>\n        <br />\n      </ion-item>\n    </ion-card-content>\n  </ion-card>\n\n  <ion-card style="border: 1px solid red;">\n    <ion-card-content style="padding-top: 0px; padding-bottom: 0px;">\n      <ion-item (click)="finalizaPlantacao()">\n        <label>Finalizar Plantaçāo</label>\n        <ion-note item-end>\n          <ion-icon\n            style="color: red; font-size: 40px;"\n            name="close-circle"\n          ></ion-icon>\n        </ion-note>\n        <br />\n      </ion-item>\n    </ion-card-content>\n  </ion-card>\n\n  <div class="wrapper" *ngIf="inicia == true">\n    <p style="text-align: left;" id="demo">\n      Plataçāo em andamento, aguarde ...\n    </p>\n\n    <div class="pie spinner"></div>\n    <div class="pie filler"></div>\n    <div class="mask"></div>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/Users/israelgoomes/estufaAutomatizada/src/pages/itens-selecionados/itens-selecionados.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */], __WEBPACK_IMPORTED_MODULE_3_ionic_progress_bar__["b" /* SimpleProgressBarProvider */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_3_ionic_progress_bar__["b" /* SimpleProgressBarProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */]])
     ], ItensSelecionadosPage);
     return ItensSelecionadosPage;
 }());
