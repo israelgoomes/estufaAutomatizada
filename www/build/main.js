@@ -93,6 +93,8 @@ var HomePage = /** @class */ (function () {
         ];
         console.log(this.listaItens);
     }
+    HomePage.prototype.ngOnInit = function () {
+    };
     HomePage.prototype.getItemSelected = function (item) {
         var _this = this;
         item.isChecked = true;
