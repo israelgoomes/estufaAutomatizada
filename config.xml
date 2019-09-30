@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>MyApp</name>
     <description>An awesome Ionic/Cordova app.</description>
@@ -8,14 +9,19 @@
 =======
 =======
 >>>>>>> 14b02d3bbc39591934e1ebbd51e75278e7ad4fa2
+=======
+>>>>>>> 4c1f4e8b29be8063c707eb11fcc971a4e8c8fb95
 <widget id="com.estufaautomatizada" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>E.A</name>
     <description>Aplicativo destinado ao Tcc de uma estufa automatizada.</description>
     <author email="rael_goomes@hotmail.com" href="https://www.linkedin.com/in/israel-gomes-70b0b6157/">Israel Gomes da Lapa</author>
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 14b02d3bbc39591934e1ebbd51e75278e7ad4fa2
 =======
 >>>>>>> 14b02d3bbc39591934e1ebbd51e75278e7ad4fa2
+=======
+>>>>>>> 4c1f4e8b29be8063c707eb11fcc971a4e8c8fb95
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
