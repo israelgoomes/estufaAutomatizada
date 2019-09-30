@@ -15,6 +15,7 @@ import {
 export class HomePage implements OnInit {
   itemOne: Array<ItemModel> = [];
   listaAux: Array<ItemModel> = [];
+  next: boolean = false;
 
   itenTwo: string = null;
   isChecked: boolean;
@@ -55,7 +56,7 @@ export class HomePage implements OnInit {
   ];
 
   getItemSelected(item: ItemModel) {
-    item.isChecked = true;
+    //tem.isChecked = true;
     let c: number = 0;
     if (this.itemOne.length < 2 && item.isChecked == true) {
       console.log("entrou aqui");
@@ -91,7 +92,12 @@ export class HomePage implements OnInit {
       }
     });
     console.log(item.isChecked);
-
+    console.log(this.itemOne.length)
+    if(this.itemOne.length > 0){
+      this.next = true;
+    }else {
+      this.next = false;
+    }
     console.log(this.itemOne);
   }
 

@@ -15,7 +15,7 @@ import { SimpleProgressBarProvider } from "ionic-progress-bar";
   templateUrl: "itens-selecionados.html"
 })
 export class ItensSelecionadosPage {
-  inicia: boolean;
+  inicia: boolean = false;;
   finaliza: boolean;
   timer: any;
   maxTime: any = 30;

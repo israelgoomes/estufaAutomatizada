@@ -28,9 +28,8 @@
     </ion-grid>
   </ion-card>
 
-  <ion-card style="border: 1px solid #65df66;">
-    <ion-card-content style="padding-top: 0px; padding-bottom: 0px;">
-      <ion-item (click)="iniciaPlantacao()">
+  <button class="btn" [disabled]="inicia == true" ion-button outline (click)="iniciaPlantacao()">
+    <ion-item >
         <label>iniciar Plantaçāo</label>
         <ion-note item-end>
           <ion-icon
@@ -40,12 +39,10 @@
         </ion-note>
         <br />
       </ion-item>
-    </ion-card-content>
-  </ion-card>
+      </button>
 
-  <ion-card style="border: 1px solid red;">
-    <ion-card-content style="padding-top: 0px; padding-bottom: 0px;">
-      <ion-item (click)="finalizaPlantacao()">
+      <button [disabled]="inicia == false" outline (click)="finalizaPlantacao()" ion-button class="btn" >
+       <ion-item >
         <label>Finalizar Plantaçāo</label>
         <ion-note item-end>
           <ion-icon
@@ -55,9 +52,8 @@
         </ion-note>
         <br />
       </ion-item>
-    </ion-card-content>
-  </ion-card>
-
+    </button>
+  
   <div class="wrapper" *ngIf="inicia == true">
     <p style="text-align: left;" id="demo">
       Plataçāo em andamento, aguarde ...

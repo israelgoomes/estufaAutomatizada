@@ -25727,6 +25727,12 @@ page-itens-selecionados img#icons {
   height: 30px;
 }
 
+page-itens-selecionados .btn {
+  padding: 10px;
+  border: 1px solid #65df66;
+  width: 100%;
+}
+
 page-itens-selecionados .teste {
   position: fixed !important;
   top: 0 !important;

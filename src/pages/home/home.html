@@ -13,7 +13,7 @@
 <ion-content>
 
   <ion-fab style="padding-left: 85%;">
-    <button [color]="primary" ion-fab (click)="selectedItens()">
+    <button [disabled]="next == false" [color]="primary" ion-fab (click)="selectedItens()">
       <ion-icon style="font-size: 30px;" name="arrow-dropright"></ion-icon>
     </button>
   </ion-fab>

@@ -68,6 +68,7 @@ var HomePage = /** @class */ (function () {
         this.appCtrl = appCtrl;
         this.itemOne = [];
         this.listaAux = [];
+        this.next = false;
         this.itenTwo = null;
         this.teste2 = "true";
         this.teste = "../../assets//imgs/icons8-cor-50.png";
@@ -98,7 +99,7 @@ var HomePage = /** @class */ (function () {
     HomePage.prototype.ngOnInit = function () { };
     HomePage.prototype.getItemSelected = function (item) {
         var _this = this;
-        item.isChecked = true;
+        //tem.isChecked = true;
         var c = 0;
         if (this.itemOne.length < 2 && item.isChecked == true) {
             console.log("entrou aqui");
@@ -130,6 +131,13 @@ var HomePage = /** @class */ (function () {
             }
         });
         console.log(item.isChecked);
+        console.log(this.itemOne.length);
+        if (this.itemOne.length > 0) {
+            this.next = true;
+        }
+        else {
+            this.next = false;
+        }
         console.log(this.itemOne);
     };
     HomePage.prototype.selectedItens = function () {
@@ -148,22 +156,12 @@ var HomePage = /** @class */ (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-<<<<<<< HEAD
-            selector: "page-home",template:/*ion-inline-start:"/Users/israelgoomes/estufaAutomatizada/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>\n      Estufa Automatizada\n    </ion-title>\n  </ion-navbar>\n\n  <ion-item class="teste" no-lines>\n    Selecione os itens a serem plantados\n  </ion-item>\n</ion-header>\n\n<ion-content>\n\n  <ion-fab style="padding-left: 85%;">\n    <button [color]="primary" ion-fab (click)="selectedItens()">\n      <ion-icon style="font-size: 30px;" name="arrow-dropright"></ion-icon>\n    </button>\n  </ion-fab>\n\n  <ion-card class="itens" *ngFor="let itens of listaItens">\n    <ion-grid>\n      <ion-card-content>\n        <ion-row style="text-align: center;">\n          <ion-checkbox\n            [(ngModel)]="itens.isChecked"\n            (click)="getItemSelected(itens)"\n          ></ion-checkbox>\n          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img\n            id="icons"\n            [src]="itens.icon"\n          />\n          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ itens.item }}\n        </ion-row>\n      </ion-card-content>\n    </ion-grid>\n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/israelgoomes/estufaAutomatizada/src/pages/home/home.html"*/
-=======
-<<<<<<< HEAD
-            selector: "page-home",template:/*ion-inline-start:"C:\Users\lsrael\Desktop\estufaAutomatizada\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n\n    <ion-title>\n\n      Estufa Automatizada\n\n    </ion-title>\n\n  </ion-navbar>\n\n\n\n  <ion-item class="teste" no-lines>\n\n    Selecione os itens a serem plantados\n\n  </ion-item>\n\n</ion-header>\n\n\n\n<ion-content>\n\n\n\n  <ion-fab style="padding-left: 85%;">\n\n    <button [color]="primary" ion-fab (click)="selectedItens()">\n\n      <ion-icon style="font-size: 30px;" name="arrow-dropright"></ion-icon>\n\n    </button>\n\n  </ion-fab>\n\n\n\n  <ion-card class="itens" *ngFor="let itens of listaItens">\n\n    <ion-grid>\n\n      <ion-card-content>\n\n        <ion-row style="text-align: center;">\n\n          <ion-checkbox\n\n            [(ngModel)]="itens.isChecked"\n\n            (click)="getItemSelected(itens)"\n\n          ></ion-checkbox>\n\n          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img\n\n            id="icons"\n\n            [src]="itens.icon"\n\n          />\n\n          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ itens.item }}\n\n        </ion-row>\n\n      </ion-card-content>\n\n    </ion-grid>\n\n  </ion-card>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\lsrael\Desktop\estufaAutomatizada\src\pages\home\home.html"*/
-=======
-            selector: "page-home",template:/*ion-inline-start:"/Users/israelgoomes/estufaAutomatizada/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>\n      Estufa Automatizada\n    </ion-title>\n  </ion-navbar>\n\n  <ion-item class="teste" no-lines>\n    Selecione os itens a serem plantados\n  </ion-item>\n</ion-header>\n\n<ion-content>\n\n  <ion-fab style="padding-left: 85%;">\n    <button [color]="primary" ion-fab (click)="selectedItens()">\n      <ion-icon style="font-size: 30px;" name="arrow-dropright"></ion-icon>\n    </button>\n  </ion-fab>\n\n  <ion-card class="itens" *ngFor="let itens of listaItens">\n    <ion-grid>\n      <ion-card-content>\n        <ion-row style="text-align: center;">\n          <ion-checkbox\n            [(ngModel)]="itens.isChecked"\n            (click)="getItemSelected(itens)"\n          ></ion-checkbox>\n          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img\n            id="icons"\n            [src]="itens.icon"\n          />\n          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ itens.item }}\n        </ion-row>\n      </ion-card-content>\n    </ion-grid>\n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/israelgoomes/estufaAutomatizada/src/pages/home/home.html"*/
->>>>>>> develop
->>>>>>> 4c1f4e8b29be8063c707eb11fcc971a4e8c8fb95
+            selector: "page-home",template:/*ion-inline-start:"/Users/israelgoomes/estufaAutomatizada/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>\n      Estufa Automatizada\n    </ion-title>\n  </ion-navbar>\n\n  <ion-item class="teste" no-lines>\n    Selecione os itens a serem plantados\n  </ion-item>\n</ion-header>\n\n<ion-content>\n\n  <ion-fab style="padding-left: 85%;">\n    <button [disabled]="next == false" [color]="primary" ion-fab (click)="selectedItens()">\n      <ion-icon style="font-size: 30px;" name="arrow-dropright"></ion-icon>\n    </button>\n  </ion-fab>\n\n  <ion-card class="itens" *ngFor="let itens of listaItens">\n    <ion-grid>\n      <ion-card-content>\n        <ion-row style="text-align: center;">\n          <ion-checkbox\n            [(ngModel)]="itens.isChecked"\n            (click)="getItemSelected(itens)"\n          ></ion-checkbox>\n          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img\n            id="icons"\n            [src]="itens.icon"\n          />\n          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ itens.item }}\n        </ion-row>\n      </ion-card-content>\n    </ion-grid>\n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/israelgoomes/estufaAutomatizada/src/pages/home/home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* App */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ModalController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* App */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* App */]) === "function" && _d || Object])
     ], HomePage);
     return HomePage;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=home.js.map
