@@ -9,6 +9,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__itens_selecionados__ = __webpack_require__(804);
+<<<<<<< HEAD
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -34,6 +35,33 @@ var ItensSelecionadosPageModule = /** @class */ (function () {
     return ItensSelecionadosPageModule;
 }());
 
+=======
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var ItensSelecionadosPageModule = /** @class */ (function () {
+    function ItensSelecionadosPageModule() {
+    }
+    ItensSelecionadosPageModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+            declarations: [
+                __WEBPACK_IMPORTED_MODULE_2__itens_selecionados__["a" /* ItensSelecionadosPage */],
+            ],
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__itens_selecionados__["a" /* ItensSelecionadosPage */]),
+            ],
+        })
+    ], ItensSelecionadosPageModule);
+    return ItensSelecionadosPageModule;
+}());
+
+>>>>>>> develop
 //# sourceMappingURL=itens-selecionados.module.js.map
 
 /***/ }),
@@ -16983,6 +17011,7 @@ var ItensSelecionadosPageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment__ = __webpack_require__(676);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_moment__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_progress_bar__ = __webpack_require__(342);
+<<<<<<< HEAD
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -17095,6 +17124,120 @@ var ItensSelecionadosPage = /** @class */ (function () {
     return ItensSelecionadosPage;
 }());
 
+=======
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var ItensSelecionadosPage = /** @class */ (function () {
+    function ItensSelecionadosPage(navCtrl, navParams, toastCtrl, _progressBar, viewCtrl) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.toastCtrl = toastCtrl;
+        this._progressBar = _progressBar;
+        this.viewCtrl = viewCtrl;
+        this.maxTime = 30;
+        this.item = [];
+        this.listaItensSelecionados = [];
+        this.listaItensSelecionados = this.navParams.get("_itensSelecionados");
+    }
+    ItensSelecionadosPage.prototype.ionViewDidLoad = function () {
+        console.log("ionViewDidLoad ItensSelecionadosPage");
+    };
+    ItensSelecionadosPage.prototype.finalizaPlantacao = function () {
+        this.inicia = false;
+        var data = new Date();
+        var hora = data.getHours();
+        var min = data.getMinutes();
+        var sec = data.getSeconds();
+        var hoje = __WEBPACK_IMPORTED_MODULE_2_moment__(new Date()).format("DD/MM/YYY hh:mm:ss");
+        var toast = this.toastCtrl.create({
+            message: "Planta\u00E7\u0101o finalizada as " + hora + ":" + min + ":" + sec,
+            duration: 3000,
+            position: "bottom"
+        });
+        toast.onDidDismiss(function () {
+            console.log("Dismissed toast");
+        });
+        toast.present();
+    };
+    ItensSelecionadosPage.prototype.iniciaPlantacao = function () {
+        this.inicia = true;
+        var data = new Date();
+        var hora = data.getHours();
+        var min = data.getMinutes();
+        var sec = data.getSeconds();
+        console.log('tamanho da lista selecionados', this.listaItensSelecionados.length);
+        if (this.listaItensSelecionados.length >= 2) {
+            console.log('Teste 1 ');
+            this.item1 = this.listaItensSelecionados[0].item;
+            this.item2 = this.listaItensSelecionados[1].item;
+            console.log;
+            this.message = "Planta\u00E7\u0101o de " + this.item1 + " e " + this.item2 + " iniciada as " + hora + ":" + min + ":" + sec + " com sucesso!";
+            console.log(this.message);
+        }
+        else {
+            this.item1 = this.listaItensSelecionados[0].item;
+            this.item2 = '';
+            this.message = "Planta\u00E7\u0101o de " + this.item1 + " iniciada as " + hora + ":" + min + ":" + sec + " com sucesso!";
+        }
+        console.log('Teste', this.item1);
+        console.log(this.item2);
+        var toast = this.toastCtrl.create({
+            message: this.message,
+            duration: 4000,
+            position: "bottom"
+        });
+        toast.onDidDismiss(function () {
+            console.log("Dismissed toast");
+        });
+        toast.present();
+        var countDownDate = new Date("Oct 29, 2018 14:50:25").getTime();
+        var x = setInterval(function () {
+            // Get todays date and time
+            var now = new Date().getTime();
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            console.log(now, "now", "countDownDate", countDownDate, "distance", distance, "days", days);
+            // Output the result in an element with id="demo"
+            //document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+            +minutes + "m " + seconds + "s ";
+            if (distance < 0) {
+                clearInterval(x);
+            }
+        }, 1000);
+    };
+    ItensSelecionadosPage.prototype.fecharModal = function () {
+        this.viewCtrl.dismiss();
+    };
+    ItensSelecionadosPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: "page-itens-selecionados",template:/*ion-inline-start:"/Users/israelgoomes/estufaAutomatizada/src/pages/itens-selecionados/itens-selecionados.html"*/'<!--\n  Generated template for the ItensSelecionadosPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>\n      <ion-icon (click)="fecharModal()" name="arrow-round-back"></ion-icon>\n      &nbsp;&nbsp;&nbsp; Itens Selecionados</ion-title\n    >\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-card class="itens" *ngFor="let itens of listaItensSelecionados">\n    <ion-grid>\n      <ion-card-content>\n        <ion-row style="text-align: center;">\n          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img\n            id="icons"\n            [src]="itens.icon"\n          />\n          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ itens.item }}\n        </ion-row>\n      </ion-card-content>\n    </ion-grid>\n  </ion-card>\n\n  <ion-card style="border: 1px solid #65df66;">\n    <ion-card-content style="padding-top: 0px; padding-bottom: 0px;">\n      <ion-item (click)="iniciaPlantacao()">\n        <label>iniciar Plantaçāo</label>\n        <ion-note item-end>\n          <ion-icon\n            style="color: #65df66; font-size: 40px;"\n            name="checkmark-circle"\n          ></ion-icon>\n        </ion-note>\n        <br />\n      </ion-item>\n    </ion-card-content>\n  </ion-card>\n\n  <ion-card style="border: 1px solid red;">\n    <ion-card-content style="padding-top: 0px; padding-bottom: 0px;">\n      <ion-item (click)="finalizaPlantacao()">\n        <label>Finalizar Plantaçāo</label>\n        <ion-note item-end>\n          <ion-icon\n            style="color: red; font-size: 40px;"\n            name="close-circle"\n          ></ion-icon>\n        </ion-note>\n        <br />\n      </ion-item>\n    </ion-card-content>\n  </ion-card>\n\n  <div class="wrapper" *ngIf="inicia == true">\n    <p style="text-align: left;" id="demo">\n      Plataçāo em andamento, aguarde ...\n    </p>\n\n    <div class="pie spinner"></div>\n    <div class="pie filler"></div>\n    <div class="mask"></div>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/Users/israelgoomes/estufaAutomatizada/src/pages/itens-selecionados/itens-selecionados.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_3_ionic_progress_bar__["b" /* SimpleProgressBarProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */]])
+    ], ItensSelecionadosPage);
+    return ItensSelecionadosPage;
+}());
+
+>>>>>>> develop
 //# sourceMappingURL=itens-selecionados.js.map
 
 /***/ }),
