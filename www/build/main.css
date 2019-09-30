@@ -25727,22 +25727,18 @@ page-itens-selecionados img#icons {
   height: 30px;
 }
 
-page-itens-selecionados .btn {
-  padding: 10px;
+page-itens-selecionados .green-btn {
+  padding: 30px;
   border: 1px solid #65df66;
   width: 100%;
+  color: #65df66;
 }
 
-page-itens-selecionados .teste {
-  position: fixed !important;
-  top: 0 !important;
-  background: white !important;
-  width: 100% !important;
-  margin-top: 56px;
-  margin-bottom: 60px;
-  border-bottom: 1px solid #d3d3d3 !important;
-  text-align: center;
-  color: #65df66;
+page-itens-selecionados .red-btn {
+  padding: 30px;
+  border: 1px solid red;
+  width: 100%;
+  color: red;
 }
 
 page-itens-selecionados .itens {

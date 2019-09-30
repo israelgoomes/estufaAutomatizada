@@ -56,14 +56,13 @@ export class HomePage implements OnInit {
   ];
 
   getItemSelected(item: ItemModel) {
-    //tem.isChecked = true;
-    let c: number = 0;
+
     if (this.itemOne.length < 2 && item.isChecked == true) {
       console.log("entrou aqui");
       this.itemOne.push(item);
      // this.listaAux.push(item);
       // c=2;
-    } else if (item.isChecked == true || item.isChecked == false) {
+    } else if (item.isChecked == true  && this.itemOne.length > 1) {
       item.isChecked = false;
 
       this.itemOne.forEach(i => {
@@ -71,7 +70,8 @@ export class HomePage implements OnInit {
           i.isChecked = false;
         }
       });
-
+      console.log(' AQUI!!', item.item)
+      console.log(item.isChecked)
       let toast = this.toastCtrl.create({
         message:
           "Só é possível selecionar até 2 itens para plantaçāo. Por favor desselecione os demais.",
@@ -80,9 +80,13 @@ export class HomePage implements OnInit {
       });
 
       toast.onDidDismiss(() => {
+        item.isChecked = false;
         console.log("Dismissed toast");
       });
       toast.present();
+    }else{
+      console.log('ELse', item.item)
+      item.isChecked = false;
     }
 
     this.itemOne.forEach(i => {

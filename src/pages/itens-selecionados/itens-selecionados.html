@@ -28,7 +28,7 @@
     </ion-grid>
   </ion-card>
 
-  <button class="btn" [disabled]="inicia == true" ion-button outline (click)="iniciaPlantacao()">
+  <button class="green-btn" [disabled]="inicia == true" ion-button outline (click)="iniciaPlantacao()">
     <ion-item >
         <label>iniciar Plantaçāo</label>
         <ion-note item-end>
@@ -41,7 +41,7 @@
       </ion-item>
       </button>
 
-      <button [disabled]="inicia == false" outline (click)="finalizaPlantacao()" ion-button class="btn" >
+      <button [disabled]="inicia == false" outline (click)="finalizaPlantacao()" ion-button class="red-btn" >
        <ion-item >
         <label>Finalizar Plantaçāo</label>
         <ion-note item-end>
